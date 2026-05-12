@@ -1,0 +1,16 @@
+package com.clement.aicode.common;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public Result<Void> handleException(Exception e) {
+        return Result.fail(
+                ErrorCode.SYSTEM_ERROR.getCode(),
+                ErrorCode.SYSTEM_ERROR.getMessage()
+        );
+    }
+}
